@@ -1,0 +1,33 @@
+:root{color-scheme:dark;--bg:#10120e;--panel:#191c16;--line:#363b2d;--text:#f3f3e9;--muted:#b4baa9;--accent:#e5fc38}
+*{box-sizing:border-box}
+html{min-width:0}
+body{font:14px Arial,Helvetica,sans-serif;width:100%;min-width:260px;max-width:480px;margin:0;padding:18px;color:var(--text);background:var(--bg);line-height:1.45}
+.brand{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.brand img{border-radius:8px}
+.brand div{flex:1}
+.brand h1{font-size:20px;line-height:1;margin:0;letter-spacing:-.6px}
+.brand p{font-size:11px;color:var(--muted);margin:4px 0 0;text-transform:uppercase;letter-spacing:1.5px}
+.brand a{color:var(--accent);font-size:22px;text-decoration:none;align-self:flex-start}
+.intro{color:var(--muted);margin:12px 0 18px}
+label{display:block;font-weight:600;margin:10px 0 7px}
+label.option{font-weight:400;display:flex;align-items:flex-start;gap:7px}
+.option input{margin:2px 0 0;accent-color:var(--accent)}
+textarea,.privacy input[type=password]{width:100%;padding:10px;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:7px;font:inherit}
+textarea{resize:vertical}
+.buttons{display:flex;gap:8px;margin:9px 0}
+.buttons button{flex:1}
+button,.upload{background:var(--accent);color:var(--bg);border:1px solid var(--accent);border-radius:7px;padding:10px;cursor:pointer;font:600 13px Arial,Helvetica,sans-serif;text-align:center}
+button:hover,.upload:hover{filter:brightness(1.08)}
+button:focus-visible,.upload:focus-within,textarea:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.secondary,.upload{background:var(--panel);color:var(--text);border-color:var(--line)}
+.danger{background:#783327;color:#fff;border-color:#783327;width:100%;margin-top:8px}
+.upload{display:block;margin-top:10px}
+.upload input{display:block;margin-top:7px;width:100%;font-size:12px}
+#status{background:var(--panel);border:1px solid var(--line);padding:9px;border-radius:6px;word-break:break-word}
+.count strong{color:var(--accent);font-size:20px}
+.note{color:var(--muted);font-size:12px;line-height:1.45}
+.privacy{border-top:1px solid var(--line);margin-top:20px;padding-top:10px}
+.privacy h2{font-size:16px;margin:5px 0}
+button:disabled{opacity:.55;cursor:wait}
+#privacyFindings{padding-left:20px;line-height:1.4}
+.footer{border-top:1px solid var(--line);padding-top:12px;margin-top:20px}

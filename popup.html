@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Highlightext Research Collector</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="brand">
+    <img src="icons/icon-48.png" width="48" height="48" alt="">
+    <div><h1>Highlightext</h1><p>Research Collector</p></div>
+    <a href="https://highlightext.com/" target="_blank" rel="noopener noreferrer" aria-label="Highlightext website">↗</a>
+  </header>
+  <p class="intro">Research. Refocused. Collect the result links that matter to your work.</p>
+  <label for="queries">Search queries (one per line)</label>
+  <textarea id="queries" rows="5">keyword highlighting research
+text analysis tools
+research workflow</textarea>
+  <label class="option"><input id="auto" type="checkbox"> Auto-run all queries and results pages</label>
+  <div class="buttons"><button id="start">Start search</button><button id="next">Next query</button></div>
+  <div class="buttons"><button id="scan">Collect this page</button><button id="nextPage">Next results page</button></div>
+  <div class="buttons"><button id="autoPage">Auto-run from this page</button><button id="stopAuto">Stop auto</button></div>
+  <p id="status" role="status">Ready</p>
+  <p class="count"><strong id="count">0</strong> unique URLs collected</p>
+  <div class="buttons"><button id="export">Download CSV</button><button id="exportJson">Download JSON</button></div>
+  <label class="upload">Import CSV / JSON / TXT <input id="import" type="file" accept=".csv,.json,.txt"></label>
+  <button id="clear" class="danger">Clear saved URLs</button>
+  <section class="privacy">
+    <h2>Privacy guard</h2>
+    <p class="note">On HTTP and HTTPS pages, review registered mouse and keyboard listeners. Only listener source and metadata go to OpenAI; typed text and mouse events do not. The API key is saved in this browser's extension storage.</p>
+    <label for="apiKey">OpenAI API key</label>
+    <input id="apiKey" type="password" autocomplete="off" placeholder="Paste API key">
+    <div class="buttons"><button id="saveKey">Save key</button><button id="removeKey" class="secondary">Remove key</button></div>
+    <p id="keyStatus" class="note"></p>
+    <button id="grantPrivacyPermission" class="secondary" hidden>Grant Firefox permission</button>
+    <label class="option"><input id="autoPrivacy" type="checkbox"> Keep privacy guard on (checks new listeners every 10 seconds; uses API)</label>
+    <div class="buttons"><button id="analyzePrivacy">Review and block tracking</button><button id="restorePrivacy" class="secondary">Restore listeners</button></div>
+    <p id="privacyStatus" class="note" role="status">Ready for review.</p>
+    <ul id="privacyFindings"></ul>
+  </section>
+  <p class="note footer">With Auto checked, Start search scrolls through each results page, clicks Google's Next link, then enters the next query in the same tab. Auto-run from this page continues with the remaining queries. Google may limit repeated searches; no CAPTCHA bypass. Data stays in browser storage except listener source sent for privacy review.</p>
+  <script src="popup.js"></script>
+</body>
+</html>

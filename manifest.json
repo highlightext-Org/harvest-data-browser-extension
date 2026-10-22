@@ -1,0 +1,91 @@
+{
+  "manifest_version": 3,
+  "name": "Highlightext Research Collector",
+  "version": "1.0.0",
+  "description": "Collect and organize Google research result URLs with export, import, automatic pagination, and an optional privacy guard.",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "research-collector@highlightext.com",
+      "strict_min_version": "142.0",
+      "data_collection_permissions": {
+        "optional": [
+          "websiteContent"
+        ]
+      }
+    }
+  },
+  "action": {
+    "default_title": "Open Highlightext Research Collector",
+    "default_icon": {
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "sidebar_action": {
+    "default_title": "Highlightext Research Collector",
+    "default_panel": "popup.html",
+    "default_icon": {
+      "48": "icons/icon-48.png"
+    },
+    "open_at_install": true
+  },
+  "side_panel": {
+    "default_path": "popup.html"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "privacy-guard.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "privacy-monitor.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.google.com/*",
+        "https://www.google.co.uk/*",
+        "https://www.google.ca/*",
+        "https://www.google.com.au/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "homepage_url": "https://highlightext.com/"
+}
