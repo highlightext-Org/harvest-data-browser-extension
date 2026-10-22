@@ -2,6 +2,8 @@
 
 A [Highlightext](https://highlightext.com/) browser extension for collecting Google research result URLs. It runs in Chrome, Brave, Firefox, and Safari. Search from the extension panel, collect organic results, deduplicate URLs in local browser storage, and import or export CSV, JSON, or TXT data. An optional privacy guard can review page event listeners with an OpenAI API key.
 
+Ready-to-load browser archives are in [`dist/`](dist/): separate Chrome and Brave ZIPs, a Firefox XPI for temporary development installs, and an unsigned Safari app ZIP. All are built from the same extension source in this repository. See [installation and browser setup](docs/installation.md) for how to use each format.
+
 ## Get started
 
 There is no package install or JavaScript build step. Clone the repository and load its root folder as an unpacked extension:
@@ -36,6 +38,8 @@ Review requires an OpenAI API key entered in the panel. The key is stored in thi
 ## Develop
 
 Start with the [developer onboarding guide](docs/development.md). It maps the source files, explains the reload workflow and local build checks, and includes a short smoke test. The Safari Xcode project shares the root extension files.
+
+Run `python3 scripts/package.py` to rebuild the Chrome, Brave, and Firefox archives. Pass `--safari-app /path/to/Highlightext.app` to include a built Safari app ZIP. See [packaging](docs/development.md#packaging-browser-builds) for the full workflow.
 
 ## Documentation
 

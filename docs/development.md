@@ -59,10 +59,26 @@ A short manual smoke test after changing behavior:
 
 There is no automated test suite in this repository. Google result markup and browser permissions are the main areas to check when behavior changes.
 
-## 5. Making a change
+## 5. Packaging browser builds
+
+The Chrome, Brave, and Firefox archives contain the same extension payload; Brave uses the Chromium build. `scripts/package.py` reads the version from `manifest.json` and writes the archives to `dist/`:
+
+```sh
+python3 scripts/package.py
+```
+
+To include the Safari app ZIP, first build the Xcode project using the command in [installation](installation.md#safari-xcode-app), then run:
+
+```sh
+python3 scripts/package.py --safari-app /tmp/highlightext-derived-data/Build/Products/Debug/Highlightext.app
+```
+
+The Firefox XPI and Safari ZIP are unsigned development artifacts. Publishing a Firefox add-on requires Mozilla signing; running the Safari app extension requires local Xcode signing.
+
+## 6. Making a change
 
 - Keep the browser-specific manifest fields and Safari Xcode references aligned with renamed files.
-- Update the version in `manifest.json` when preparing a release. Do not commit downloaded archives or unsigned build products as source.
+- Update the version in `manifest.json` when preparing a release, then regenerate the `dist/` archives. Do not edit generated archives by hand.
 - Preserve the user's stored data keys when possible; changing keys needs a migration or an explicit reset plan.
 - Keep API keys in browser storage only. Document any new network request or permission in the README and privacy guide.
 - Update the relevant guide when install steps, permissions, or browser behavior change.

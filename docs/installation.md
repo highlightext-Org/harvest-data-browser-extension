@@ -2,6 +2,8 @@
 
 The repository root is the extension package. It contains `manifest.json`, the JavaScript source, `popup.html`, `style.css`, and icons. Chrome, Brave, Firefox, and temporary Safari installs use these files directly. No `npm install` or bundling step is required.
 
+Prebuilt archives are also available in `dist/`. The Chrome and Brave ZIPs can be extracted and loaded as unpacked extensions. The Firefox XPI is unsigned and intended for **Load Temporary Add-on** during development. The Safari ZIP contains an unsigned macOS app build for inspection; use a locally signed Xcode build to run its app extension.
+
 ## Requirements
 
 - Chrome or Brave with Manifest V3 extension support; Firefox 142 or newer; or Safari 26.5 or newer on macOS.
@@ -13,7 +15,7 @@ The repository root is the extension package. It contains `manifest.json`, the J
 
 1. Open `chrome://extensions` in Chrome or `brave://extensions` in Brave.
 2. Turn on **Developer mode**.
-3. Click **Load unpacked** and choose the repository root, the folder containing `manifest.json`.
+3. Click **Load unpacked** and choose the repository root, the folder containing `manifest.json`. You can also extract the matching Chrome or Brave ZIP from `dist/` and choose the extracted folder.
 4. Pin **Highlightext Research Collector** to the toolbar and click its icon. The panel should open.
 5. If prompted, allow access to the Google search pages you plan to collect. The privacy guard's page listener monitoring needs access to the sites where you use it.
 
@@ -24,7 +26,7 @@ Chrome's [unpacked extension guide](https://developer.chrome.com/docs/extensions
 ## Firefox
 
 1. Open `about:debugging#/runtime/this-firefox`.
-2. Click **Load Temporary Add-on** and select this repository's `manifest.json`.
+2. Click **Load Temporary Add-on** and select this repository's `manifest.json` or the unsigned Firefox XPI in `dist/`.
 3. Click the toolbar icon to open the sidebar. If prompted, allow Google site access.
 4. To use privacy review, click **Grant Firefox permission** in the sidebar and approve website content access.
 
